@@ -1,0 +1,90 @@
+{
+  "artifact": "gypsum-viewer-v1",
+  "built": "2026-11-09",
+  "status": "TEST INSTRUMENT \u00b7 disposable \u00b7 not EarthEye production",
+  "readme": "README_TEST_ONLY.txt",
+  "entry_point": "index.html",
+  "hosting_note": "Any static host serving text/html with scripts allowed over HTTPS. No build step, no secrets, no tokens.",
+  "route_payload": {
+    "file": "route_package_v1.json",
+    "checksum_scope": "canonical payload, excluding built_at",
+    "package_checksum": "c78fecc93806a014174c9e1c1500d7a1425a170c0295fa6fb694890df0c79f54",
+    "expected_in_ui": "c78fecc93806a014174c9e1c1500d7a1425a170c0295fa6fb694890df0c79f54",
+    "payload_modified_by_viewer": false,
+    "verification_mode": "RUNTIME on device via crypto.subtle over the embedded canonical payload; the page shows expected, computed and verdict as separate rows"
+  },
+  "service_worker": {
+    "file": "sw.js",
+    "sha256": "1d6e483a0c7ee5eacaf742d83ab3849186e0129e35b1c38f1810bd645ba2f66b",
+    "cache_name": "gypsum-viewer-v1",
+    "precache": [
+      "./",
+      "./index.html",
+      "./route_package_v1.json",
+      "./manifest.webmanifest",
+      "./icon-512.png"
+    ],
+    "strategy": "cache-first, network fallback, explicit 503 plain-text response on an uncached offline request"
+  },
+  "asset_inventory": {
+    "index.html": {
+      "bytes": 62026,
+      "sha256": "9acd6d588a950f6bfc4445f6febbebd0578d3d793a8ed5159acf3c1333ea080c"
+    },
+    "sw.js": {
+      "bytes": 1244,
+      "sha256": "1d6e483a0c7ee5eacaf742d83ab3849186e0129e35b1c38f1810bd645ba2f66b"
+    },
+    "manifest.webmanifest": {
+      "bytes": 472,
+      "sha256": "575757fc7fc51f2f428a830ca1f0239a4a2a51cafdbf370c7372d15983b6dd91"
+    },
+    "route_package_v1.json": {
+      "bytes": 81826,
+      "sha256": "a7f7edd58bba28bb840b2c81f3de9c22de71e7f845be443becb4437a3e63a3bf"
+    },
+    "icon-512.png": {
+      "bytes": 3982,
+      "sha256": "7e5cb03862d45e98cba5e6a4e6d873a2fe7380de12ae9687f7de975295e6a501"
+    },
+    "README_TEST_ONLY.txt": {
+      "bytes": 1592,
+      "sha256": "e239e0661b58f2127d8fe4b10e9c17e279a091f6a5077847d3583c65913d8cf9"
+    }
+  },
+  "remote_dependencies": [],
+  "analytics": 0,
+  "tracking": 0,
+  "earth_eye_write_endpoints": 0,
+  "database_access": 0,
+  "schema_changes": 0,
+  "renders": {
+    "facilities": 7,
+    "facility_labels": 7,
+    "mode_badges": 7,
+    "segments": 9,
+    "junction_markers": 10,
+    "loose_end_markers": 4,
+    "loop_spans": 6,
+    "loop_miles": 3.2762,
+    "network_miles": 5.6699
+  },
+  "device_test_contract": {
+    "requires": "two consecutive cold-start offline runs against the same payload checksum",
+    "pass": "Navigation-ready geometry \u00b7 Conditional scheduled access",
+    "fail": "Reference-only \u00b7 Offline verification failed",
+    "failure_layers": [
+      "map_package",
+      "app_rendering",
+      "route_reconstruction",
+      "device_location",
+      "access_warning"
+    ],
+    "rule": "a failed GPS fix fails device_location only, never the package"
+  },
+  "builder_identity": {
+    "builder": "builder-v1",
+    "script_sha256": "7f1fa35c6eee916aaf35854c",
+    "runbook": "runbook-v1, 18 checks"
+  }
+}
